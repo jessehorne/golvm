@@ -29,13 +29,7 @@ func NewBytecode(path string) (*Bytecode, error) {
 	var current int64 = 12
 	for {
 		var f *Function
-		current, f, err = ReadFunction(current, data)
-		fmt.Println("\n", f, "\n")
-
-		// print constants
-		for _, c := range f.Constants {
-			fmt.Println("Constant: ", c)
-		}
+		current, f, err = ReadFunction(true, current, data)
 
 		if err != nil {
 			fmt.Println(err)
